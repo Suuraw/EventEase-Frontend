@@ -139,7 +139,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto">
-          <div className="flex min-h-screen items-center justify-center p-4">
+          <div className="flex min-h-screen items-center justify-center p-2 sm:p-4">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -153,20 +153,20 @@ const CreateEventModal = ({ isOpen, onClose }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", duration: 0.5 }}
-              className="relative w-full max-w-2xl rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl p-6 overflow-hidden"
+              className="relative w-full max-w-2xl rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl p-4 sm:p-6 overflow-y-auto max-h-[90vh]"
             >
               <button
                 onClick={onClose}
-                className="absolute right-4 top-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
+                className="absolute right-2 top-2 sm:right-4 sm:top-4 p-2 rounded-full hover:bg-gray-100 transition-colors"
               >
                 <X size={20} className="text-gray-500" />
               </button>
 
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 pr-8">
                 Create New Event
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 {/* Event Name */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -177,7 +177,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full px-4 py-2 rounded-lg border ${
+                    className={`w-full px-3 sm:px-4 py-2 rounded-lg border ${
                       errors.name ? "border-red-500" : "border-gray-200"
                     } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     placeholder="Enter event name"
@@ -197,7 +197,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                     value={formData.description}
                     onChange={handleChange}
                     rows={4}
-                    className={`w-full px-4 py-2 rounded-lg border ${
+                    className={`w-full px-3 sm:px-4 py-2 rounded-lg border ${
                       errors.description ? "border-red-500" : "border-gray-200"
                     } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     placeholder="Describe your event"
@@ -210,8 +210,8 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Date & Category */}
-                <div className="sm:flex space-x-4 ">
-                  <div className="md:flex-1">
+                <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4">
+                  <div className="w-full sm:w-1/2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Date & Time *
                     </label>
@@ -220,7 +220,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       name="date"
                       value={formData.date}
                       onChange={handleChange}
-                      className={`w-full px-4 py-2 rounded-lg border ${
+                      className={`w-full px-3 sm:px-4 py-2 rounded-lg border ${
                         errors.date ? "border-red-500" : "border-gray-200"
                       } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                     />
@@ -229,7 +229,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                     )}
                   </div>
 
-                  <div className="md:flex-1">
+                  <div className="w-full sm:w-1/2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Category *
                     </label>
@@ -237,7 +237,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       name="category"
                       value={formData.category}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       {categories.map((cat) => (
                         <option key={cat} value={cat}>
@@ -258,14 +258,14 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                     name="location"
                     value={formData.location}
                     onChange={handleChange}
-                    className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="Enter event location or online link"
                   />
                 </div>
 
                 {/* Attendee Count & Status */}
-                <div className="sm:flex space-x-4">
-                  <div className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-4 sm:space-x-4">
+                  <div className="w-full sm:w-1/2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Attendee Count
                     </label>
@@ -275,11 +275,11 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       value={formData.attendeeCount}
                       onChange={handleChange}
                       min="0"
-                      className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                   </div>
 
-                  <div className="flex-1">
+                  <div className="w-full sm:w-1/2">
                     <label className="block text-sm font-medium text-gray-700 mb-1">
                       Status
                     </label>
@@ -287,7 +287,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       name="status"
                       value={formData.status}
                       onChange={handleChange}
-                      className="w-full px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 sm:px-4 py-2 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                       {statusOptions.map((status) => (
                         <option key={status} value={status}>
@@ -304,7 +304,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                     Event Banner Image *
                   </label>
 
-                  <div className="flex space-x-4 items-center relative">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:space-x-4 items-start sm:items-center relative">
                     <input
                       type="url"
                       name="bannerImage"
@@ -315,48 +315,18 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       }
                       onChange={(e) => {
                         handleChange(e);
-                        setUpload(false); // Hide upload button when typing in URL
+                        setUpload(false);
                       }}
-                      className={`flex-1 px-4 py-2 rounded-lg border ${
-                        errors.bannerImage
-                          ? "border-red-500"
-                          : "border-gray-200"
+                      className={`w-full px-3 sm:px-4 py-2 rounded-lg border ${
+                        errors.bannerImage ? "border-red-500" : "border-gray-200"
                       } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                       placeholder="Enter image URL"
                     />
 
-                    {/* Show Delete Button when typing in URL */}
-                    {formData.bannerImage && !bannerPreview && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          handleRemoveImage();
-                          setUpload(true); // Show upload button when URL is cleared
-                        }}
-                        className="absolute right-2 bg-red-500 text-white rounded-full p-2 hover:bg-red-600 transition-colors shadow-md"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          strokeWidth={1.5}
-                          stroke="currentColor"
-                          className="w-4 h-4"
-                        >
-                          <path
-                            strokeLinecap="round" 
-                            strokeLinejoin="round"
-                            d="M6 18L18 6M6 6l12 12"
-                          />
-                        </svg>
-                      </button>
-                    )}
-
-                    {/* Upload Button - Hidden if an image exists */}
                     {upload && !bannerPreview && !formData.bannerImage && (
                       <label
                         htmlFor="upload-banner"
-                        className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors space-x-2"
+                        className="w-full sm:w-auto flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors space-x-2"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -382,25 +352,24 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       accept="image/*"
                       onChange={(e) => {
                         handleFileUpload(e);
-                        setUpload(false); // Hide upload button when file is uploaded
+                        setUpload(false);
                       }}
                       className="hidden"
                     />
                   </div>
 
-                  {/* Image Preview & Delete Button (when image is uploaded) */}
                   {bannerPreview && (
                     <div className="mt-4 relative">
                       <img
                         src={bannerPreview}
                         alt="Event Banner Preview"
-                        className="rounded-lg shadow-lg max-h-48 object-contain"
+                        className="w-full rounded-lg shadow-lg max-h-48 object-contain"
                       />
                       <button
                         type="button"
                         onClick={() => {
                           handleRemoveImage();
-                          setUpload(true); // Show upload button when image is removed
+                          setUpload(true);
                         }}
                         className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-md"
                       >
@@ -429,24 +398,23 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                   )}
                 </div>
 
-                {/* Submit Error Message */}
                 {errors.submit && (
                   <p className="text-red-500 text-sm">{errors.submit}</p>
                 )}
 
                 {/* Action Buttons */}
-                <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
+                <div className="flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:space-x-4 pt-4 sm:pt-6 border-t border-gray-200">
                   <button
                     type="button"
                     onClick={onClose}
-                    className="px-6 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
+                    className="w-full sm:w-auto px-6 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 transition-colors"
                     disabled={isSubmitting}
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
-                    className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:bg-blue-400"
+                    className="w-full sm:w-auto px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:bg-blue-400"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? "Creating..." : "Create Event"}

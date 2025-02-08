@@ -65,7 +65,6 @@ const MyEvent = ({ setMyEvent, setEventStatus, eventStatus }) => {
     });
     //Delete Event
     socket.on("MyEventDeleted", (deletedEventId) => {
-      console.log("DELETE");
       setEvents((prevEvents) =>
         prevEvents.filter((event) => event._id !== deletedEventId)
       );
@@ -165,7 +164,7 @@ const MyEvent = ({ setMyEvent, setEventStatus, eventStatus }) => {
       <Sidebar />
 
       <Navbar />
-      <div className="flex-grow mt-20 p-6">
+      <div className="flex-grow p-6 mt-[10%]">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex-1 w-full">
             <div className="relative">
