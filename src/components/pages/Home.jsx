@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import cloud from "../../assets/placard.png";
 import { Send } from "lucide-react";
 import Footer from "../Footer";
 import Navbar from "../NavBar";
 import { AnimatePresence } from "framer-motion";
-import {  Menu, X, User, Calendar } from "lucide-react";
+import { Menu, X, User, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 // Animation for each letter appearing one-by-one
@@ -35,7 +35,8 @@ const sliderVariants = {
 
 function Home() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const navigate=useNavigate();
+  const [logged, isLogged] = useState(false);
+  const navigate = useNavigate();
   const text = "Plan, Manage, Experience Events Effortlessly..";
   const events = [
     { name: "Concerts", image: "https://s6.imgcdn.dev/YYnEgw.jpg" },
@@ -45,6 +46,11 @@ function Home() {
     { name: "Business", image: "https://s6.imgcdn.dev/YYnpeD.jpg" },
     { name: "Webinars", image: "https://s6.imgcdn.dev/YYnHDu.jpg" },
   ];
+  useEffect(() => {
+    const user = localStorage.getItem("userId");
+    if (user) isLogged(true);
+    else isLogged(false);
+  }, []);
   const Sidebar = () => (
     <AnimatePresence>
       {isSidebarOpen && (
@@ -147,10 +153,15 @@ function Home() {
               animate={{ opacity: 1, y: 0 }} // Move upwards
               transition={{ duration: 1, delay: 0.3 }}
             >
-              <div className="flex items-center bg-blue-100 text-blue-500 py-2 px-4 rounded-xl shadow-md hover:bg-blue-200 cursor-pointer transition md:mt-4" onClick={()=>navigate("/register")}>
-                <h1 className="text-lg font-bold">Get Started</h1>
-                <Send size={20} className="ml-2 text-blue-500" />
-              </div>
+              {!logged && (
+                <div
+                  className="flex items-center bg-blue-100 text-blue-500 py-2 px-4 rounded-xl shadow-md hover:bg-blue-200 cursor-pointer transition md:mt-4"
+                  onClick={() => navigate("/register")}
+                >
+                  <h1 className="text-lg font-bold">Get Started</h1>
+                  <Send size={20} className="ml-2 text-blue-500" />
+                </div>
+              )}
               <div className="w-40 h-40 flex justify-center items-center md:mt-30">
                 <h1 className="text-6xl font-bold text-blue-500">EVENTS</h1>
               </div>
