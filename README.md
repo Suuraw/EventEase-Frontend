@@ -26,3 +26,11 @@
    ```bash
    git clone https://github.com/your-repository.git
    cd your-repository
+2. **Install Dependencies:**
+   ```bash
+   npm install
+3. **Run the application-FRONTEND**
+   ```bash
+   cd client
+   npm run dev
+
