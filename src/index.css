@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+  background-color: white; /* White background */
+  background-image: linear-gradient(to right, #ddd 1px, transparent 1px),
+    linear-gradient(to bottom, #ddd 1px, transparent 1px);
+  background-size: 20px 20px; /* Adjust grid size */
+  font-family: "IBM Plex Mono", monospace; /* Optional font */
+  margin: 0;
+  padding: 0;
+}
