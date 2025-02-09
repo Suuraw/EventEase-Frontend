@@ -1,4 +1,3 @@
-// CreateEventModal.jsx
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
@@ -15,10 +14,9 @@ const CreateEventModal = ({ isOpen, onClose }) => {
     bannerImage: "",
     status: "upcoming",
     location: "",
-    creator: localStorage.getItem('userId') // Or however you store the logged-in user's ID
+    creator: localStorage.getItem("userId"),
   });
-  console.log( localStorage.getItem('userId'))
-  const [upload, setUpload] = useState(true);
+
   const [bannerPreview, setBannerPreview] = useState("");
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -31,6 +29,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
     "Workshop",
     "Other",
   ];
+
   const statusOptions = ["upcoming", "ongoing", "completed", "cancelled"];
 
   const validateForm = () => {
@@ -65,7 +64,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
           bannerImage: "",
           status: "upcoming",
           location: "",
-          creator:localStorage.getItem('userId')
+          creator: localStorage.getItem("userId"),
         });
         setBannerPreview("");
         onClose();
@@ -313,17 +312,16 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                           ? formData.bannerImage
                           : ""
                       }
-                      onChange={(e) => {
-                        handleChange(e);
-                        setUpload(false);
-                      }}
+                      onChange={handleChange}
                       className={`w-full px-3 sm:px-4 py-2 rounded-lg border ${
-                        errors.bannerImage ? "border-red-500" : "border-gray-200"
+                        errors.bannerImage
+                          ? "border-red-500"
+                          : "border-gray-200"
                       } focus:outline-none focus:ring-2 focus:ring-blue-500`}
                       placeholder="Enter image URL"
                     />
 
-                    {upload && !bannerPreview && !formData.bannerImage && (
+                    {!bannerPreview && !formData.bannerImage && (
                       <label
                         htmlFor="upload-banner"
                         className="w-full sm:w-auto flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-lg cursor-pointer hover:bg-blue-700 transition-colors space-x-2"
@@ -350,10 +348,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       type="file"
                       id="upload-banner"
                       accept="image/*"
-                      onChange={(e) => {
-                        handleFileUpload(e);
-                        setUpload(false);
-                      }}
+                      onChange={handleFileUpload}
                       className="hidden"
                     />
                   </div>
@@ -367,10 +362,7 @@ const CreateEventModal = ({ isOpen, onClose }) => {
                       />
                       <button
                         type="button"
-                        onClick={() => {
-                          handleRemoveImage();
-                          setUpload(true);
-                        }}
+                        onClick={handleRemoveImage}
                         className="absolute top-2 right-2 p-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors shadow-md"
                       >
                         <svg

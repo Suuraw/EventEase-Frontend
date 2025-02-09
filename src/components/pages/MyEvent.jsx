@@ -162,9 +162,10 @@ const MyEvent = ({ setMyEvent, setEventStatus, eventStatus }) => {
       </div>
 
       <Sidebar />
-
-      <Navbar />
-      <div className="flex-grow p-6 mt-[10%]">
+      <div >
+        <Navbar />
+      </div>
+      <div className="flex-grow p-6 mt-20">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex-1 w-full">
             <div className="relative">
