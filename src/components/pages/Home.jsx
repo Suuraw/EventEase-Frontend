@@ -113,7 +113,7 @@ function Home() {
       <Sidebar />
 
       <Navbar />
-      <div className="min-h-screen flex justify-center items-center relative pt-16 md:pt-2">
+      <div className="min-h-screen flex justify-center items-center relative pt-16 md:pt-2 mt-15">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -163,7 +163,7 @@ function Home() {
                   <Send size={20} className="ml-2 text-blue-500" />
                 </div>
               )}
-              <div className="w-40 h-40 flex justify-center items-center mt-4 md:mt-30">
+              <div className="w-40 h-40 z-30 flex justify-center items-center mt-15">
                 <h1 className="text-6xl font-bold text-blue-500">EVENTS</h1>
               </div>
             </motion.div>
