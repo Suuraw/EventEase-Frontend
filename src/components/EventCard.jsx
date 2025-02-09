@@ -4,7 +4,7 @@ import { Users, CalendarIcon, MapPin, Trash2, Edit2, Save } from "lucide-react";
 import { format } from "date-fns";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:3000"); // Adjust based on your backend URL
+const socket = io("https://event-management-y4ds.onrender.com"); // Adjust based on your backend URL
 
 const statusOptions = ["upcoming", "ongoing", "completed", "cancelled"];
 
